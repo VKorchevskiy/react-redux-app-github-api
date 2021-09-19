@@ -25,7 +25,7 @@ const Main = () => {
   }, [currentPage]);
 
   function searchHandler() {
-    dispatch(currentPage(1));
+    dispatch(setCurrentPage(1));
     dispatch(getRepos(searchValue, currentPage, perPage));
   }
 
