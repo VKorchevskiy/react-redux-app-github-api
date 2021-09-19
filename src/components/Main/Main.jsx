@@ -5,6 +5,7 @@ import { getRepos } from "../../actions/repos";
 import { setCurrentPage } from "../../reducers/reposReduser";
 import Repo from "../Repo/Repo";
 import "./Main.css";
+import { createPages } from "../../utils/createPages";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,10 @@ const Main = () => {
   const perPage = useSelector((state) => state.repos.perPage);
   const totalCount = useSelector((state) => state.repos.totalCount);
   const [searchValue, setSearchValue] = useState("");
+  const pagesCount = Math.ceil(totalCount / perPage);
+  const pages = [];
 
-  const pages = [1, 2, 3, 4, 5];
+  createPages(pages, pagesCount, currentPage);
 
   useEffect(() => {
     dispatch(getRepos(searchValue, currentPage, perPage));
