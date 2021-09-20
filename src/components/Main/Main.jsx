@@ -6,6 +6,7 @@ import { setCurrentPage } from "../../reducers/reposReduser";
 import Repo from "../Repo/Repo";
 import "./Main.css";
 import { createPages } from "../../utils/createPages";
+import { CREATE_PAGES_CONFIG } from "../../utils/constants";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Main = () => {
   const pagesCount = Math.ceil(totalCount / perPage);
   const pages = [];
 
-  createPages(pages, pagesCount, currentPage);
+  createPages(pages, pagesCount, currentPage, CREATE_PAGES_CONFIG);
 
   useEffect(() => {
     dispatch(getRepos(searchValue, currentPage, perPage));

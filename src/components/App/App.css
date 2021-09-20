@@ -4,5 +4,9 @@ body {
 }
 
 .container {
-  width: 1280px;
+  width: 100%;
+}
+
+* {
+  outline: 1px solid red;
 }
