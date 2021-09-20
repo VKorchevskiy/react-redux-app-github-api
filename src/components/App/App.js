@@ -12,7 +12,7 @@ function App() {
       <div className="container">
         <Switch>
           <Route exact path="/" component={Main}></Route>
-          <Route path="/card" component={Card}></Route>
+          <Route path="/card/:userName/:repoName" component={Card}></Route>
           <Redirect to="/" />
         </Switch>
       </div>
