@@ -7,11 +7,13 @@ import Repo from "../Repo/Repo";
 import "./Main.css";
 import { createPages } from "../../utils/createPages";
 import { CREATE_PAGES_CONFIG } from "../../utils/constants";
+import { Redirect } from "react-router-dom";
 
 const Main = () => {
   const dispatch = useDispatch();
   const repos = useSelector((state) => state.repos.items);
   const isFetching = useSelector((state) => state.repos.isFetching);
+  const isFetchError = useSelector((state) => state.repos.isFetchError);
   const currentPage = useSelector((state) => state.repos.currentPage);
   const perPage = useSelector((state) => state.repos.perPage);
   const totalCount = useSelector((state) => state.repos.totalCount);
@@ -28,6 +30,10 @@ const Main = () => {
   function searchHandler() {
     dispatch(setCurrentPage(1));
     dispatch(getRepos(searchValue, currentPage, perPage));
+  }
+
+  if (isFetchError) {
+    return <Redirect to="/error" />;
   }
 
   return (
