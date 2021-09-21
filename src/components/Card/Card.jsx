@@ -25,7 +25,7 @@ const Card = (props) => {
         <div className="name">{repo.name}</div>
         <div className="stars">{repo.stargazers_count}</div>
       </div>
-      {contributors.map((contributor, i) => <div>{i+1}. {contributor.login}</div> )}
+      {contributors.map((contributor, i) => <div key={contributor.id}>{i+1}. {contributor.login}</div> )}
     </div>
   );
 };
