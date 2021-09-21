@@ -50,7 +50,7 @@ const Main = () => {
         </button>
       </div>
       {isFetching === false ? (
-        repos.map((repo) => <Repo repo={repo} />)
+        repos.map((repo) => <Repo key={repo.id} repo={repo} />)
       ) : (
         <div className="fetching"></div>
       )}
